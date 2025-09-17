@@ -1,0 +1,160 @@
+Cifar-10:
+
+1. RoTTA gốc:
+    - Flags: 
+        IS_USE_IMPROVE: False
+        USE_QUEUE: False
+        USE_ADAPTIVE_AGING: False 
+        USE_AGING_PER_BATCH: False
+        USE_AWARE_SCORE: False
+        BASE_AGING_SPEED: 1.0
+    - Execution Time: 28:25
+    - Performance: 
+        +---------------------+----------+------------+
+        |      Corruption     | Accuracy | Error Rate |
+        +---------------------+----------+------------+
+        |    motion_blur_5    |  82.99   |   17.01    |
+        |        snow_5       |  78.83   |   21.17    |
+        |        fog_5        |  82.29   |   17.71    |
+        |     shot_noise_5    |  66.35   |   33.65    |
+        |    defocus_blur_5   |  83.39   |   16.61    |
+        |      contrast_5     |  80.65   |   19.35    |
+        |     zoom_blur_5     |  84.26   |   15.74    |
+        |     brightness_5    |  87.72   |   12.28    |
+        |       frost_5       |  79.63   |   20.37    |
+        | elastic_transform_5 |  71.86   |   28.14    |
+        |     glass_blur_5    |  62.13   |   37.87    |
+        |   gaussian_noise_5  |  73.67   |   26.33    |
+        |      pixelate_5     |  69.94   |   30.06    |
+        |  jpeg_compression_5 |  73.65   |   26.35    |
+        |   impulse_noise_5   |  61.24   |   38.76    |
+        |      Total Avg      |  75.91   |   24.09    |
+        +---------------------+----------+------------+ 
+
+
+2. RoTTA - Use Queue
+    - Flags:
+        IS_USE_IMPROVE: True
+        USE_QUEUE: True
+        USE_ADAPTIVE_AGING: False 
+        USE_AGING_PER_BATCH: False
+        USE_AWARE_SCORE: False
+        BASE_AGING_SPEED: 1.0
+    - Execution Time: 16:43
+    - Performance: 
+        +---------------------+----------+------------+
+        |      Corruption     | Accuracy | Error Rate |
+        +---------------------+----------+------------+
+        |    motion_blur_5    |  82.94   |   17.06    |
+        |        snow_5       |  76.12   |   23.88    |
+        |        fog_5        |  82.80   |   17.20    |
+        |     shot_noise_5    |  66.34   |   33.66    |
+        |    defocus_blur_5   |  79.72   |   20.28    |
+        |      contrast_5     |  82.42   |   17.58    |
+        |     zoom_blur_5     |  83.94   |   16.06    |
+        |     brightness_5    |  87.44   |   12.56    |
+        |       frost_5       |  79.82   |   20.18    |
+        | elastic_transform_5 |  69.74   |   30.26    |
+        |     glass_blur_5    |  60.00   |   40.00    |
+        |   gaussian_noise_5  |  73.55   |   26.45    |
+        |      pixelate_5     |  72.45   |   27.55    |
+        |  jpeg_compression_5 |  72.82   |   27.18    |
+        |   impulse_noise_5   |  60.92   |   39.08    |
+        |      Total Avg      |  75.40   |   24.60    |
+        +---------------------+----------+------------+ 
+
+3. RoTTA - Use Queue - USE_AGING_PER_BATCH
+    - Flags:
+        IS_USE_IMPROVE: True
+        USE_QUEUE: True
+        USE_ADAPTIVE_AGING: False 
+        USE_AGING_PER_BATCH: True
+        USE_AWARE_SCORE: False
+        BASE_AGING_SPEED: 1.0
+    - Execution Time: 16:33
+    - Performance: 
+        +---------------------+----------+------------+
+        |      Corruption     | Accuracy | Error Rate |
+        +---------------------+----------+------------+
+        |    motion_blur_5    |  83.41   |   16.59    |
+        |        snow_5       |  79.82   |   20.18    |
+        |        fog_5        |  83.30   |   16.70    |
+        |     shot_noise_5    |  69.17   |   30.83    |
+        |    defocus_blur_5   |  78.34   |   21.66    |
+        |      contrast_5     |  84.87   |   15.13    |
+        |     zoom_blur_5     |  80.99   |   19.01    |
+        |     brightness_5    |  90.38   |    9.62    |
+        |       frost_5       |  80.75   |   19.25    |
+        | elastic_transform_5 |  75.84   |   24.16    |
+        |     glass_blur_5    |  66.21   |   33.79    |
+        |   gaussian_noise_5  |  74.85   |   25.15    |
+        |      pixelate_5     |  72.37   |   27.63    |
+        |  jpeg_compression_5 |  77.38   |   22.62    |
+        |   impulse_noise_5   |  63.84   |   36.16    |
+        |      Total Avg      |  77.43   |   22.57    |
+        +---------------------+----------+------------+ 
+
+4. RoTTA - Use Queue - USE_AGING_PER_BATCH - Adaptive aging
+    - Flags:
+        IS_USE_IMPROVE: True
+        USE_QUEUE: True
+        USE_ADAPTIVE_AGING: True 
+        USE_AGING_PER_BATCH: True
+        USE_AWARE_SCORE: False
+        BASE_AGING_SPEED: 1.0
+    - Execution Time: 16:33
+    - Performance: 
+        +---------------------+----------+------------+
+        |      Corruption     | Accuracy | Error Rate |
+        +---------------------+----------+------------+
+        |    motion_blur_5    |  83.33   |   16.67    |
+        |        snow_5       |  78.69   |   21.31    |
+        |        fog_5        |  82.13   |   17.87    |
+        |     shot_noise_5    |  69.68   |   30.32    |
+        |    defocus_blur_5   |  77.81   |   22.19    |
+        |      contrast_5     |  81.95   |   18.05    |
+        |     zoom_blur_5     |  85.91   |   14.09    |
+        |     brightness_5    |  90.43   |    9.57    |
+        |       frost_5       |  80.99   |   19.01    |
+        | elastic_transform_5 |  73.60   |   26.40    |
+        |     glass_blur_5    |  67.62   |   32.38    |
+        |   gaussian_noise_5  |  74.23   |   25.77    |
+        |      pixelate_5     |  74.53   |   25.47    |
+        |  jpeg_compression_5 |  75.41   |   24.59    |
+        |   impulse_noise_5   |  66.10   |   33.90    |
+        |      Total Avg      |  77.49   |   22.51    |
+        +---------------------+----------+------------+ 
+
+
+
+RoTTA - Use Queue - USE_AGING_PER_BATCH - Adaptive aging - aware score
+    - Flags:
+        IS_USE_IMPROVE: True
+        USE_QUEUE: True
+        USE_ADAPTIVE_AGING: True 
+        USE_AGING_PER_BATCH: True
+        USE_AWARE_SCORE: True
+        BASE_AGING_SPEED: 1.0
+
+- Execution Time: 16:33
+- Performance: 
+    +---------------------+----------+------------+
+    |      Corruption     | Accuracy | Error Rate |
+    +---------------------+----------+------------+
+    |    motion_blur_5    |  83.07   |   16.93    |
+    |        snow_5       |  78.67   |   21.33    |
+    |        fog_5        |  81.51   |   18.49    |
+    |     shot_noise_5    |  68.36   |   31.64    |
+    |    defocus_blur_5   |  77.15   |   22.85    |
+    |      contrast_5     |  81.94   |   18.06    |
+    |     zoom_blur_5     |  84.81   |   15.19    |
+    |     brightness_5    |  91.29   |    8.71    |
+    |       frost_5       |  80.91   |   19.09    |
+    | elastic_transform_5 |  74.17   |   25.83    |
+    |     glass_blur_5    |  65.46   |   34.54    |
+    |   gaussian_noise_5  |  77.62   |   22.38    |
+    |      pixelate_5     |  77.54   |   22.46    |
+    |  jpeg_compression_5 |  77.32   |   22.68    |
+    |   impulse_noise_5   |  67.72   |   32.28    |
+    |      Total Avg      |  77.84   |   22.16    |
+    +---------------------+----------+------------+ 

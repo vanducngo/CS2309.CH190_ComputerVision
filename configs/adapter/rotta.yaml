@@ -1,0 +1,41 @@
+TEST:
+  BATCH_SIZE: 64
+
+OPTIM:
+  METHOD: Adam
+  STEPS: 1
+  BETA: 0.9
+  LR: 1e-3
+  WD: 0.
+
+INPUT:
+  SIZE: (32, 32)
+
+ADAPTER:
+  NAME: rotta
+  RoTTA:
+    NU: 0.001
+    MEMORY_SIZE: 192
+    UPDATE_FREQUENCY: 64
+    LAMBDA_T: 1.0
+    LAMBDA_U: 1.0
+    ALPHA: 0.05
+  IMPROVEMENT: # MỤC MỚI
+    IS_USE_IMPROVE: True
+    USE_QUEUE: True
+    USE_ADAPTIVE_AGING: True 
+    USE_AGING_PER_BATCH: True
+    USE_AWARE_SCORE: True
+    BASE_AGING_SPEED: 32.0
+
+    LAMBDA_D: 0.5
+    AGE_FACTOR: 10.0
+
+    # Wait for classes
+    WAIT_FOR_CLASSES: True
+    WAIT_CLASS_RATIO: 0.5  # Chờ cho đến khi 50% số lớp có mẫu
+    WAIT_MAX_INSTANCES: 640 # Chờ tối đa 640 mẫu (10 batch), sau đó bắt đầu adapt
+
+LOADER:
+  SAMPLER:
+    TYPE: "temporal"
