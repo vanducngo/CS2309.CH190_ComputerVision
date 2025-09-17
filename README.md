@@ -1,12 +1,6 @@
-Chắc chắn rồi! Dựa trên toàn bộ thông tin về project và các yêu cầu của bạn, đây là một file `README.md` hoàn chỉnh được viết bằng tiếng Việt và định dạng Markdown. File này không chỉ hướng dẫn cách sử dụng mà còn tóm tắt được giá trị và đóng góp của công trình nghiên cứu.
-
-Bạn có thể sao chép toàn bộ nội dung dưới đây và dán vào file `README.md` trong repository GitHub của mình.
-
----
-
 # Nâng cấp RoTTA với APQ-Mem: For Robust Test-Time Adaptation in Dynamic Scenarios
 
-Đây là mã nguồn cho dự án chuyên đề **"Nâng cấp RoTTA với APQ-Mem"**, thuộc môn học CS2309.CH190: Chuyên đề nghiên cứu và ứng dụng về Thị giác máy tính. Dự án này xây dựng dựa trên công trình state-of-the-art **RoTTA (CVPR 2023)** và đề xuất một kiến trúc bộ nhớ đệm (Memory Bank) nâng cao nhằm cải thiện cả về hiệu suất tính toán và độ chính xác thích ứng.
+Đây là mã nguồn cho dự án chuyên đề **Nâng cấp RoTTA với APQ-Mem**, thuộc môn học CS2309.CH190: Chuyên đề nghiên cứu và ứng dụng về Thị giác máy tính. Dự án này xây dựng dựa trên công trình state-of-the-art **RoTTA (CVPR 2023)** và đề xuất một kiến trúc bộ nhớ đệm (Memory Bank) nâng cao nhằm cải thiện cả về hiệu suất tính toán và độ chính xác thích ứng.
 
 ## 1. Giới thiệu
 
@@ -14,7 +8,7 @@ Test-Time Adaptation (TTA) là một hướng nghiên cứu quan trọng, cho ph
 
 Mặc dù RoTTA rất hiệu quả, chúng tôi nhận thấy thành phần cốt lõi của nó là Memory Bank **CSTU** vẫn còn các hạn chế cố hữu về:
 -   **Hiệu suất tính toán:** Thao tác tìm kiếm tuyến tính `O(K)` trở thành nút thắt cổ chai khi mở rộng quy mô bộ nhớ.
--   **Khả năng thích ứng:** Cơ chế "lão hóa" cứng nhắc, phản ứng chậm với các thay đổi đột ngột của môi trường.
+-   **Khả năng thích ứng:** Cơ chế lão hóa cứng nhắc, phản ứng chậm với các thay đổi đột ngột của môi trường.
 -   **Logic lựa chọn:** Quy tắc cứng nhắc có thể dẫn đến các quyết định chưa tối ưu và nguy cơ các mẫu hiếm tồn tại quá lâu trong bộ nhớ.
 
 Do đó, trong dự án này, chúng tôi đề xuất **APQ-Mem (Adaptive Priority-Queue Memory)**, một kiến trúc bộ nhớ đệm nâng cao được thiết kế để giải quyết triệt để các vấn đề trên. Mục tiêu của dự án là tạo ra một phiên bản RoTTA nhanh hơn, thông minh hơn và mạnh mẽ hơn, sẵn sàng hơn cho các ứng dụng thực tế.
@@ -25,9 +19,9 @@ Dự án này mang lại những đóng góp cụ thể sau:
 
 -   **Tối ưu hóa triệt để hiệu suất:** Bằng cách thay thế cấu trúc dữ liệu `List` bằng **Priority Queue (`heapq`)**, chúng tôi đã giảm độ phức tạp của các thao tác tìm và xóa mẫu từ `O(K)` xuống `O(log K)`, giúp giảm hơn 40% tổng thời gian thực thi và mở khóa khả năng sử dụng bộ nhớ lớn hơn.
 
--   **Giới thiệu cơ chế Thích ứng Thông minh:** Chúng tôi đề xuất cơ chế **Adaptive Aging**, cho phép bộ nhớ tự động điều chỉnh tốc độ "lão hóa" của các mẫu dựa trên mức độ thay đổi của môi trường, được định lượng bằng `drift signal` tính từ entropy.
+-   **Giới thiệu cơ chế Thích ứng Thông minh:** Chúng tôi đề xuất cơ chế **Adaptive Aging**, cho phép bộ nhớ tự động điều chỉnh tốc độ lão hóa của các mẫu dựa trên mức độ thay đổi của môi trường, được định lượng bằng `drift signal` tính từ entropy.
 
--   **Phát triển Logic Cân bằng Linh hoạt:** Chúng tôi phát triển một **Aware Heuristic Score** với cơ chế phạt mềm dựa trên hàm `softmax`, thay thế cho quy tắc cứng của CSTU. Điều này giúp tăng cường khả năng cân bằng lớp một cách linh hoạt và giải quyết rủi ro các mẫu hiếm bị "bất tử" trong bộ nhớ.
+-   **Phát triển Logic Cân bằng Linh hoạt:** Chúng tôi phát triển một **Aware Heuristic Score** với cơ chế phạt mềm dựa trên hàm `softmax`, thay thế cho quy tắc cứng của CSTU. Điều này giúp tăng cường khả năng cân bằng lớp một cách linh hoạt và giải quyết rủi ro các mẫu hiếm bị bất tử trong bộ nhớ.
 
 -   **Thực nghiệm và Phân tích Toàn diện:** Chúng tôi đã tiến hành các thí nghiệm ablation study chi tiết trên **CIFAR-10-C** và **CIFAR-100-C**, chứng minh rằng các cải tiến của chúng tôi không chỉ vượt trội về tốc độ mà còn cải thiện đáng kể về Tỷ lệ lỗi so với phương pháp SOTA.
 
